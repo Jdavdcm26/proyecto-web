@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crear cuenta | UPC Connect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../css/style.css" rel="stylesheet" />
+</head>
+<body>
+
+  <header class="navbar-upc">
+    <div class="navbar-inner">
+      <nav class="navbar navbar-expand-lg p-0">
+        <div class="container-fluid p-0">
+          <a class="navbar-brand" href="../index.html"><span class="logo-badge">UPC</span> Connect</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="py-5">
+      <div class="container">
+        <div class="form-upc mx-auto" style="max-width:480px;">
+          <div class="text-center mb-4">
+            <span class="logo-badge mx-auto mb-2" style="display:grid;">UPC</span>
+            <h1 class="h4 fw-bold mt-2">Crea tu cuenta</h1>
+            <p class="text-muted small">Únete a la comunidad UPC Connect</p>
+          </div>
+
+          <form id="formRegistro" novalidate>
+            <div class="mb-3">
+              <label class="form-label small fw-bold">Nombre completo</label>
+              <input type="text" class="form-control" id="regNombre" placeholder="Escribe tu nombre" required />
+              <div class="invalid-feedback">Ingresa tu nombre completo (mínimo 3 caracteres).</div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label small fw-bold">Correo</label>
+              <input type="email" class="form-control" id="regCorreo" placeholder="nombre@unicesar.edu.co" required />
+              <div class="invalid-feedback">Ingresa un correo válido.</div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label small fw-bold">Contraseña</label>
+              <input type="password" class="form-control" id="regClave" placeholder="Mínimo 6 caracteres" required />
+              <div class="invalid-feedback">La contraseña debe tener al menos 6 caracteres.</div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label small fw-bold">Confirmar contraseña</label>
+              <input type="password" class="form-control" id="regClaveConfirmar" placeholder="Repite tu contraseña" required />
+              <div class="invalid-feedback">Las contraseñas no coinciden.</div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label small fw-bold">Tipo de usuario</label>
+              <select class="form-select" id="regTipoUsuario" required>
+                <option value="">Selecciona una opción</option>
+                <option value="estudiante">Estudiante</option>
+                <option value="egresado">Egresado</option>
+                <option value="docente">Docente</option>
+                <option value="empresa">Empresa</option>
+              </select>
+              <div class="invalid-feedback">Selecciona un tipo de usuario.</div>
+            </div>
+
+            <div id="registroMensaje" class="alert alert-success small d-none" role="alert"></div>
+
+            <button type="submit" class="btn btn-upc-solid w-100 mt-2">Crear cuenta</button>
+          </form>
+
+          <p class="text-center small text-muted mt-4 mb-0">
+            ¿Ya tienes cuenta?
+            <a href="login.html" class="text-upc fw-bold">Inicia sesión</a>
+          </p>
+        </div>
+        <p class="text-center small text-muted mt-3">
+          Este registro es una simulación: los datos no se guardan en ninguna base de datos.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/auth.js"></script>
+</body>
+</html>
