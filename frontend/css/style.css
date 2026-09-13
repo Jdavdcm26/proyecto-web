@@ -1,0 +1,530 @@
+/* ==================================================
+   VARIABLES
+   Colores tomados del diseño original entregado en el
+   ZIP (verde institucional), organizados como variables
+   CSS para mantener consistencia en todo el sitio.
+   ================================================== */
+:root {
+  --primary-color: #006837;
+  --primary-dark: #004d28;
+  --secondary-color: #e8f5e9;
+  --accent-color: #d2ebd9;
+  --background-color: #f4f6f8;
+  --text-color: #1a1a1a;
+  --text-muted: #6b7280;
+  --white: #ffffff;
+  --border-color: #e5e7eb;
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-sm: 10px;
+  --shadow-card: 0 10px 25px rgba(0, 104, 55, 0.06);
+  --font-titulos: "Plus Jakarta Sans", sans-serif;
+  --font-texto: "Inter", sans-serif;
+}
+
+/* ==================================================
+   ESTILOS GENERALES
+   ================================================== */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-texto);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  padding-top: 84px; /* espacio para navbar fija */
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-titulo {
+  font-family: var(--font-titulos);
+  letter-spacing: -0.02em;
+}
+
+a {
+  text-decoration: none;
+}
+
+.text-upc {
+  color: var(--primary-color) !important;
+}
+
+.bg-upc {
+  background-color: var(--primary-color) !important;
+}
+
+.bg-upc-suave {
+  background-color: var(--secondary-color) !important;
+}
+
+section {
+  padding: 72px 0;
+}
+
+.seccion-blanca {
+  background-color: var(--white);
+}
+
+.eyebrow {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--primary-color);
+}
+
+/* ==================================================
+   BOTONES
+   ================================================== */
+.btn-upc-solid {
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: 1px solid var(--primary-color);
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  padding: 0.7rem 1.4rem;
+  transition: 0.2s ease;
+}
+.btn-upc-solid:hover {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+  color: var(--white);
+}
+.btn-upc-solid:disabled {
+  opacity: 0.7;
+}
+
+.btn-upc-outline {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  padding: 0.7rem 1.4rem;
+  transition: 0.2s ease;
+}
+.btn-upc-outline:hover {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+.btn-upc-outline:disabled {
+  opacity: 0.7;
+}
+
+/* ==================================================
+   NAVBAR
+   ================================================== */
+.navbar-upc {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+  padding: 14px 0;
+}
+
+.navbar-upc .navbar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  padding: 10px 20px;
+  box-shadow: var(--shadow-card);
+}
+
+.navbar-upc .navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-titulos);
+  font-weight: 800;
+  color: var(--primary-color);
+}
+
+.navbar-upc .logo-badge {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  background: var(--primary-color);
+  color: var(--white);
+  font-weight: 800;
+  font-size: 0.8rem;
+  border-radius: 10px;
+}
+
+.navbar-upc .nav-link {
+  font-weight: 600;
+  color: var(--text-muted);
+  padding: 0.5rem 0.9rem !important;
+}
+
+.navbar-upc .nav-link:hover,
+.navbar-upc .nav-link.active {
+  color: var(--primary-color);
+}
+
+/* ==================================================
+   HERO
+   ================================================== */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 60px 0 40px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--secondary-color);
+  border: 1px solid var(--accent-color);
+  color: var(--primary-color);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 999px;
+}
+
+.hero h1 {
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.hero .destacado {
+  color: var(--primary-color);
+}
+
+.hero p.lead {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+}
+
+.avatares-mini {
+  display: flex;
+}
+.avatares-mini .avatar-circle {
+  width: 32px;
+  height: 32px;
+  font-size: 0.65rem;
+  border: 2px solid var(--white);
+  margin-left: -10px;
+}
+.avatares-mini .avatar-circle:first-child {
+  margin-left: 0;
+}
+
+/* Tarjeta flotante del hero (simula vista previa del feed) */
+.feed-preview {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  background: var(--white);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  animation: flotar 5s ease-in-out infinite;
+}
+
+@keyframes flotar {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feed-preview {
+    animation: none;
+  }
+}
+
+/* ==================================================
+   TARJETAS (genéricas, usadas en varias páginas)
+   ================================================== */
+.card-upc {
+  background: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  transition: 0.2s ease;
+}
+
+.card-upc:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(0, 104, 55, 0.1);
+}
+
+.icon-box {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  background: var(--secondary-color);
+  color: var(--primary-color);
+  border-radius: var(--radius-sm);
+  font-size: 1.4rem;
+}
+
+.avatar-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: var(--white);
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.avatar-sm {
+  width: 40px;
+  height: 40px;
+  font-size: 0.75rem;
+}
+
+.avatar-lg {
+  width: 96px;
+  height: 96px;
+  font-size: 1.6rem;
+}
+
+.skill-tag {
+  background: var(--background-color);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 5px 11px;
+  border-radius: 999px;
+}
+
+.badge-upc {
+  display: inline-block;
+  background: var(--secondary-color);
+  color: var(--primary-color);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+.project-cover {
+  height: 130px;
+  width: 100%;
+}
+
+/* ==================================================
+   UPC TALENT MATCH
+   ================================================== */
+.match-badge {
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 5px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.match-alto {
+  background: var(--secondary-color);
+  color: var(--primary-color);
+}
+.match-medio {
+  background: #fff4d6;
+  color: #8a6900;
+}
+.match-bajo {
+  background: #f1f2f4;
+  color: var(--text-muted);
+}
+
+.progress-upc {
+  width: 100%;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--background-color);
+  overflow: hidden;
+}
+.progress-upc-bar {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+.progress-upc-bar.match-alto {
+  background: var(--primary-color);
+}
+.progress-upc-bar.match-medio {
+  background: #e6b800;
+}
+.progress-upc-bar.match-bajo {
+  background: #b0b6bf;
+}
+
+.talent-match-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.talent-match-flow .paso {
+  background: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 20px 26px;
+  text-align: center;
+  min-width: 150px;
+  box-shadow: var(--shadow-card);
+}
+.talent-match-flow .flecha {
+  font-size: 1.6rem;
+  color: var(--primary-color);
+  font-weight: 800;
+}
+
+/* ==================================================
+   FEED
+   ================================================== */
+.btn-like {
+  background: none;
+  border: none;
+  font-weight: 700;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+.btn-like.activo {
+  color: var(--primary-color);
+}
+.btn-comentar {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* ==================================================
+   FORMULARIOS (login / registro)
+   ================================================== */
+.form-upc {
+  background: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  box-shadow: var(--shadow-card);
+}
+
+.form-upc .form-control,
+.form-upc .form-select {
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.9rem;
+  border: 1px solid var(--border-color);
+}
+.form-upc .form-control:focus,
+.form-upc .form-select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 104, 55, 0.12);
+}
+
+/* ==================================================
+   DASHBOARD
+   ================================================== */
+.grafico-barras {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  gap: 20px;
+  height: 220px;
+  padding-top: 20px;
+}
+.barra-grupo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  flex: 1;
+}
+.barra {
+  width: 100%;
+  max-width: 64px;
+  background: linear-gradient(180deg, var(--primary-color), var(--primary-dark));
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 24px;
+  transition: height 0.5s ease;
+}
+.barra-valor {
+  color: var(--white);
+  font-size: 0.65rem;
+  font-weight: 700;
+  margin-top: 6px;
+}
+.barra-etiqueta {
+  margin-top: 10px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-align: center;
+  font-weight: 600;
+}
+
+/* ==================================================
+   FOOTER
+   ================================================== */
+.footer-upc {
+  background: var(--white);
+  border-top: 1px solid var(--border-color);
+}
+.footer-upc a {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+.footer-upc a:hover {
+  color: var(--primary-color);
+}
+.footer-upc h6 {
+  font-weight: 800;
+  color: var(--text-color);
+}
+
+/* ==================================================
+   RESPONSIVE
+   ================================================== */
+@media (max-width: 991px) {
+  .hero h1 {
+    font-size: 2.1rem;
+  }
+  section {
+    padding: 52px 0;
+  }
+}
+
+@media (max-width: 767px) {
+  body {
+    padding-top: 76px;
+  }
+  .form-upc {
+    padding: 26px;
+  }
+  .talent-match-flow {
+    flex-direction: column;
+  }
+  .talent-match-flow .flecha {
+    transform: rotate(90deg);
+  }
+}
