@@ -1,35 +1,5 @@
-/* ==================================================
-   OPORTUNIDADES.JS
-   Lógica de la pantalla de Oportunidades (bolsa de
-   prácticas/empleos + UPC Talent Match).
-   Responsable: Mario (Bloque D)
-   ================================================== */
-
-/* --------------------------------------------------
-   TEMPORAL: UPC Talent Match
-   Esto debería vivir en js/talentMatch.js (tarea FED-002,
-   responsable José). Como todavía no existe ese archivo,
-   lo dejamos aquí para poder probar Oportunidades de forma
-   independiente. Quitar de aquí en cuanto José suba
-   talentMatch.js, y agregar <script src="../js/talentMatch.js">
-   ANTES de este script en oportunidades.html.
-   -------------------------------------------------- */
-function calcularCompatibilidad(habilidadesUsuario, habilidadesRequeridas) {
-  const usuarioNormalizado = habilidadesUsuario.map((h) => h.toLowerCase());
-  const coincidencias = habilidadesRequeridas.filter((req) =>
-    usuarioNormalizado.includes(req.toLowerCase())
-  );
-  const porcentaje = Math.round(
-    (coincidencias.length / habilidadesRequeridas.length) * 100
-  );
-  return porcentaje;
-}
-
-function colorCompatibilidad(porcentaje) {
-  if (porcentaje >= 70) return "match-alto";
-  if (porcentaje >= 40) return "match-medio";
-  return "match-bajo";
-}
+/* calcularCompatibilidad() y colorCompatibilidad() ahora
+   viven en js/talentMatch.js (tarea de José, FED-002). */
 
 /* --------------------------------------------------
    RENDER: PÁGINA OPORTUNIDADES (pages/oportunidades.html)
@@ -77,12 +47,13 @@ function renderOportunidades() {
     })
     .join("");
 
-  contenedor.querySelectorAll("[data-postular]").forEach((btn) => {
+   contenedor.querySelectorAll("[data-postular]").forEach((btn) => {
     btn.addEventListener("click", () => {
       btn.textContent = "¡Postulación enviada!";
       btn.disabled = true;
       btn.classList.remove("btn-upc-solid");
       btn.classList.add("btn-upc-outline");
+      mostrarToast("Tu postulación fue enviada correctamente.");
     });
   });
 
@@ -94,14 +65,15 @@ function renderOportunidades() {
   });
 }
 
-/* Muestra el detalle de una oportunidad. Usa un modal de
-   Bootstrap si existe uno en la página (#modalDetalleOportunidad);
-   si no, usa alert() como respaldo temporal.
-   NOTA DoD: el plan pide nunca usar alert() nativo para esto —
-   hay que agregar el modal en oportunidades.html cuando se defina
-   el componente de modal del Design System (tarea de José). */
+
 function mostrarDetalleOportunidad(op) {
-  alert(`${op.titulo}\n${op.empresa} · ${op.modalidad}\n\n${op.descripcion}`);
+  document.getElementById("modalDetalleTitulo").textContent = op.titulo;
+  document.getElementById("modalDetalleEmpresa").textContent = op.empresa;
+  document.getElementById("modalDetalleModalidad").textContent = op.modalidad;
+  document.getElementById("modalDetalleDescripcion").textContent = op.descripcion;
+
+  const modal = new bootstrap.Modal(document.getElementById("modalDetalleOportunidad"));
+  modal.show();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
