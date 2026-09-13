@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="UPC Connect: conectando talento, oportunidades y futuro en la Universidad Popular del Cesar." />
+  <title>UPC Connect | Conectando talento, oportunidades y futuro</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5 (CDN) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Estilos propios -->
+  <link href="css/style.css" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ============== NAVBAR ============== -->
+  <header class="navbar-upc">
+    <div class="navbar-inner">
+      <nav class="navbar navbar-expand-lg p-0">
+        <div class="container-fluid p-0">
+          <a class="navbar-brand" href="index.html">
+            <span class="logo-badge">UPC</span> Connect
+          </a>
+          <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarUpc">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarUpc">
+            <ul class="navbar-nav mx-auto gap-lg-2">
+              <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+              <li class="nav-item"><a class="nav-link" href="pages/red.html" data-pagina="red.html">Mi Red</a></li>
+              <li class="nav-item"><a class="nav-link" href="pages/oportunidades.html" data-pagina="oportunidades.html">Oportunidades</a></li>
+              <li class="nav-item"><a class="nav-link" href="pages/portafolio.html" data-pagina="portafolio.html">Portafolio</a></li>
+              <li class="nav-item"><a class="nav-link" href="pages/mentorias.html" data-pagina="mentorias.html">Mentorías</a></li>
+            </ul>
+            <div class="d-flex gap-2 mt-3 mt-lg-0">
+              <a href="pages/login.html" class="btn btn-upc-outline">Iniciar sesión</a>
+              <a href="pages/registro.html" class="btn btn-upc-solid">Registrarse</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============== HERO ============== -->
+    <section class="hero">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <span class="hero-badge">✨ La comunidad que impulsa tu futuro</span>
+            <h1 class="mt-4">El talento de la UPC merece estar <span class="destacado">conectado</span></h1>
+            <p class="lead mt-3">
+              Una plataforma de networking profesional y empleabilidad para conectar
+              estudiantes, egresados, docentes y empresas del ecosistema de la
+              Universidad Popular del Cesar.
+            </p>
+            <div class="d-flex flex-column flex-sm-row gap-3 mt-4">
+              <a href="pages/registro.html" class="btn btn-upc-solid btn-lg">Crear mi perfil →</a>
+              <a href="#oportunidades" class="btn btn-upc-outline btn-lg">Explorar oportunidades</a>
+            </div>
+            <div class="d-flex align-items-center gap-3 mt-4">
+              <div class="avatares-mini">
+                <div class="avatar-circle" style="background:#b5d8bf;color:#006837">AM</div>
+                <div class="avatar-circle" style="background:#e9c69c;color:#8a5c28">JP</div>
+                <div class="avatar-circle" style="background:#b9cbe9;color:#34567e">VC</div>
+              </div>
+              <span class="small text-muted">Más de 5.000 personas ya hacen parte</span>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="feed-preview mx-auto" style="max-width:480px;">
+              <div class="d-flex align-items-center justify-content-between border-bottom px-4 py-3">
+                <div class="d-flex align-items-center gap-2">
+                  <span class="logo-badge" style="width:34px;height:34px;font-size:0.65rem;">UPC</span>
+                  <strong>Mi comunidad</strong>
+                </div>
+                <span class="text-muted">🔍 🔔</span>
+              </div>
+              <div class="p-3" style="background:var(--background-color)">
+                <div class="card-upc p-3 mb-3 d-flex flex-row align-items-center gap-2">
+                  <div class="avatar-sm avatar-circle" style="background:linear-gradient(135deg,#d2ebd9,#79b98d)"></div>
+                  <span class="small text-muted flex-fill">¿Qué quieres compartir hoy?</span>
+                  <button class="btn btn-sm btn-upc-outline">Publicar</button>
+                </div>
+                <div class="card-upc p-3 mb-3">
+                  <div class="d-flex align-items-start gap-2">
+                    <div class="avatar-sm avatar-circle">LM</div>
+                    <div class="flex-fill">
+                      <div class="d-flex justify-content-between">
+                        <strong class="small">Laura Martínez</strong>
+                        <span class="small text-muted">Hace 2 h</span>
+                      </div>
+                      <p class="small text-muted mb-0">Egresada · Ingeniería de Sistemas</p>
+                    </div>
+                  </div>
+                  <p class="small mt-2 mb-2">¡Feliz de compartir que inicié mi práctica profesional! Gracias a la red UPC por conectar el talento con grandes oportunidades.</p>
+                  <div class="d-flex gap-3 border-top pt-2 small text-upc fw-bold">
+                    <span>♥ 28</span><span class="text-muted fw-normal">💬 7 comentarios</span>
+                  </div>
+                </div>
+                <div class="card-upc p-3">
+                  <div class="d-flex align-items-center gap-2">
+                    <div class="icon-box" style="width:40px;height:40px;font-size:1rem;">💼</div>
+                    <div>
+                      <p class="small fw-bold mb-0">Analista Junior de Datos</p>
+                      <p class="small text-muted mb-0">TecnoCaribe · Valledupar</p>
+                    </div>
+                  </div>
+                  <button class="btn btn-upc-outline w-100 mt-3 btn-sm">Ver oportunidad</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== MÉTRICAS ============== -->
+    <section class="pt-0">
+      <div class="container">
+        <div class="card-upc row g-0 text-center overflow-hidden">
+          <div class="col-md-4 py-4 border-end-md">
+            <p class="font-titulo fw-bold text-upc fs-2 mb-0">5.000+</p>
+            <p class="text-muted small mb-0">Estudiantes y egresados</p>
+          </div>
+          <div class="col-md-4 py-4 border-end-md">
+            <p class="font-titulo fw-bold text-upc fs-2 mb-0">120+</p>
+            <p class="text-muted small mb-0">Empresas conectadas</p>
+          </div>
+          <div class="col-md-4 py-4">
+            <p class="font-titulo fw-bold text-upc fs-2 mb-0">300+</p>
+            <p class="text-muted small mb-0">Oportunidades publicadas</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== CARACTERÍSTICAS ============== -->
+    <section id="caracteristicas" class="seccion-blanca">
+      <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width:640px;">
+          <p class="eyebrow">Todo en un solo lugar</p>
+          <h2 class="mt-2">Una plataforma para cada etapa de tu camino</h2>
+          <p class="text-muted mt-2">Diseñada para que el talento UPC encuentre conexiones reales y oportunidades que sí generan impacto.</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4">
+            <div class="card-upc p-4 h-100">
+              <div class="icon-box mb-3">👤</div>
+              <h3 class="h6 fw-bold">Perfil profesional</h3>
+              <p class="small text-muted">Construye tu identidad profesional dentro de la comunidad UPC.</p>
+              <a href="pages/perfil.html" class="text-upc fw-bold small">Conocer más →</a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="card-upc p-4 h-100">
+              <div class="icon-box mb-3">🌐</div>
+              <h3 class="h6 fw-bold">Red profesional</h3>
+              <p class="small text-muted">Conecta con estudiantes, egresados, docentes y empresas.</p>
+              <a href="pages/red.html" class="text-upc fw-bold small">Conocer más →</a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="card-upc p-4 h-100">
+              <div class="icon-box mb-3">💼</div>
+              <h3 class="h6 fw-bold">Oportunidades</h3>
+              <p class="small text-muted">Encuentra prácticas y empleos alineados con tu perfil.</p>
+              <a href="pages/oportunidades.html" class="text-upc fw-bold small">Conocer más →</a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="card-upc p-4 h-100">
+              <div class="icon-box mb-3">📁</div>
+              <h3 class="h6 fw-bold">Portafolio</h3>
+              <p class="small text-muted">Muestra tus proyectos y destaca tu trabajo académico.</p>
+              <a href="pages/portafolio.html" class="text-upc fw-bold small">Conocer más →</a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="card-upc p-4 h-100">
+              <div class="icon-box mb-3">🎓</div>
+              <h3 class="h6 fw-bold">Mentorías</h3>
+              <p class="small text-muted">Aprende de egresados y profesionales de tu área.</p>
+              <a href="pages/mentorias.html" class="text-upc fw-bold small">Conocer más →</a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="card-upc p-4 h-100">
+              <div class="icon-box mb-3">⚡</div>
+              <h3 class="h6 fw-bold">UPC Talent Match</h3>
+              <p class="small text-muted">Descubre oportunidades compatibles con tus habilidades.</p>
+              <a href="#talent-match" class="text-upc fw-bold small">Conocer más →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== UPC TALENT MATCH ============== -->
+    <section id="talent-match">
+      <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width:640px;">
+          <p class="eyebrow">Funcionalidad diferenciadora</p>
+          <h2 class="mt-2">UPC Talent Match</h2>
+          <p class="text-muted mt-2">
+            Nuestro sistema compara tus habilidades con las que requiere cada
+            oportunidad y calcula automáticamente tu porcentaje de compatibilidad.
+          </p>
+        </div>
+        <div class="talent-match-flow mb-5">
+          <div class="paso">
+            <div class="fs-3 mb-1">🧠</div>
+            <p class="fw-bold small mb-0">Tus habilidades</p>
+          </div>
+          <span class="flecha">→</span>
+          <div class="paso">
+            <div class="fs-3 mb-1">🔍</div>
+            <p class="fw-bold small mb-0">Comparación</p>
+          </div>
+          <span class="flecha">→</span>
+          <div class="paso">
+            <div class="fs-3 mb-1">🎯</div>
+            <p class="fw-bold small mb-0">Oportunidades compatibles</p>
+          </div>
+        </div>
+        <div class="card-upc p-4 mx-auto" style="max-width:520px;">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <p class="fw-bold mb-0">Practicante de Desarrollo Frontend</p>
+            <span class="match-badge match-alto">75% Compatible</span>
+          </div>
+          <p class="small text-muted mb-3">TecnoCaribe · Requiere: HTML, CSS, JavaScript, Bootstrap</p>
+          <div class="progress-upc">
+            <div class="progress-upc-bar match-alto" style="width:75%"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== EMPRESAS ============== -->
+    <section id="empresas">
+      <div class="container">
+        <div class="row align-items-center g-4 bg-upc rounded-4 text-white p-5">
+          <div class="col-lg-8">
+            <div class="icon-box mb-3" style="background:rgba(255,255,255,.15);color:#fff;">🤝</div>
+            <h2 class="fw-bold">Encuentra el talento que hace crecer tu empresa</h2>
+            <p class="mt-3" style="color:rgba(255,255,255,.8)">
+              Publica tus vacantes, conecta con perfiles UPC y fortalece tu marca
+              empleadora dentro de la comunidad universitaria.
+            </p>
+            <a href="pages/registro.html" class="btn btn-light fw-bold mt-2">Quiero publicar una vacante →</a>
+          </div>
+          <div class="col-lg-4 text-center d-none d-lg-block">
+            <div style="width:160px;height:160px;border:1px solid rgba(255,255,255,.2);border-radius:50%;display:grid;place-items:center;margin:auto;background:rgba(255,255,255,.08)">
+              <span style="font-size:2.6rem;">💼</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== EVENTOS ============== -->
+    <section id="eventos" class="seccion-blanca">
+      <div class="container">
+        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-end mb-4 gap-2">
+          <div>
+            <p class="eyebrow">Mantente cerca</p>
+            <h2 class="mt-2 mb-0">Próximos eventos</h2>
+          </div>
+          <a href="#eventos" class="text-upc fw-bold small">Ver agenda completa →</a>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card-upc p-4 d-flex flex-row gap-3">
+              <div class="text-center bg-upc-suave text-upc rounded-3 px-3 py-2" style="min-width:64px;">
+                <div class="fw-bold fs-5">18</div><div class="small fw-bold">JUN</div>
+              </div>
+              <div>
+                <span class="badge-upc mb-2">Networking</span>
+                <p class="fw-bold small mb-1">Feria de Empleo UPC 2026</p>
+                <p class="small text-muted mb-0">📍 Auditorio Julio Villazón</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card-upc p-4 d-flex flex-row gap-3">
+              <div class="text-center bg-upc-suave text-upc rounded-3 px-3 py-2" style="min-width:64px;">
+                <div class="fw-bold fs-5">25</div><div class="small fw-bold">JUN</div>
+              </div>
+              <div>
+                <span class="badge-upc mb-2">Formación</span>
+                <p class="fw-bold small mb-1">Masterclass: Marca personal</p>
+                <p class="small text-muted mb-0">📍 Modalidad virtual</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card-upc p-4 d-flex flex-row gap-3">
+              <div class="text-center bg-upc-suave text-upc rounded-3 px-3 py-2" style="min-width:64px;">
+                <div class="fw-bold fs-5">02</div><div class="small fw-bold">JUL</div>
+              </div>
+              <div>
+                <span class="badge-upc mb-2">Comunidad</span>
+                <p class="fw-bold small mb-1">Encuentro de Egresados</p>
+                <p class="small text-muted mb-0">📍 Centro de Convenciones</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== CITA ============== -->
+    <section>
+      <div class="container text-center" style="max-width:680px;">
+        <div class="fs-1 text-upc mb-2">"</div>
+        <blockquote class="font-titulo fw-bold fs-4">
+          UPC Connect convierte los vínculos de nuestra comunidad en oportunidades para avanzar juntos.
+        </blockquote>
+        <p class="text-muted small mt-3">— Comunidad Universidad Popular del Cesar</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============== FOOTER ============== -->
+  <footer class="footer-upc">
+    <div class="container py-5">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <a class="navbar-brand" href="index.html"><span class="logo-badge">UPC</span> Connect</a>
+          <p class="text-muted small mt-3" style="max-width:280px;">
+            Conectando talento, oportunidades y futuro en la Universidad Popular del Cesar.
+          </p>
+        </div>
+        <div class="col-6 col-lg-2">
+          <h6>Plataforma</h6>
+          <a class="d-block py-1" href="#caracteristicas">Características</a>
+          <a class="d-block py-1" href="#eventos">Eventos</a>
+        </div>
+        <div class="col-6 col-lg-3">
+          <h6>Institucional</h6>
+          <a class="d-block py-1" href="https://www.unicesar.edu.co" target="_blank" rel="noreferrer">Universidad Popular del Cesar</a>
+          <a class="d-block py-1" href="#empresas">Para empresas</a>
+        </div>
+        <div class="col-6 col-lg-3">
+          <h6>Legal</h6>
+          <a class="d-block py-1" href="#">Privacidad</a>
+          <a class="d-block py-1" href="#">Términos de uso</a>
+        </div>
+      </div>
+    </div>
+    <div class="border-top py-3">
+      <div class="container small text-muted">© 2026 UPC Connect · Universidad Popular del Cesar</div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS (bundle incluye Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
