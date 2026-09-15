@@ -6,7 +6,13 @@ function renderPortafolio() {
   const contenedor = document.getElementById("portafolioContainer");
   if (!contenedor) return;
 
-  const proyectos = obtener(CLAVES.PORTAFOLIO) || [];
+    const todos = obtener(CLAVES.PORTAFOLIO) || [];
+
+  const texto = document.getElementById("buscarProyecto")?.value || "";
+  const proyectos = filtrarProyectos(todos, texto);
+
+  const vacio = document.getElementById("portafolioVacio");
+  vacio.classList.toggle("d-none", proyectos.length > 0);
 
   contenedor.innerHTML = proyectos
     .map(
@@ -41,4 +47,6 @@ function renderPortafolio() {
 document.addEventListener("DOMContentLoaded", () => {
   if (!protegerPagina()) return;
   renderPortafolio();
+
+  document.getElementById("buscarProyecto")?.addEventListener("input", renderPortafolio);
 });
