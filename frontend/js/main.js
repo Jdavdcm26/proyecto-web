@@ -19,6 +19,31 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Brand "UPC Connect" dinámico: a feed.html si hay sesión,
+  // a la landing si no la hay.
+  const enPaginaInterna = window.location.pathname.includes("/pages/");
+  const haySesionActiva = typeof haySesion === "function" && haySesion();
+  const brand = document.querySelector(".navbar-brand[href]");
+  if (brand) {
+    brand.setAttribute(
+      "href",
+      haySesionActiva
+        ? enPaginaInterna
+          ? "feed.html"
+          : "pages/feed.html"
+        : enPaginaInterna
+          ? "../index.html"
+          : "index.html"
+    );
+  }
+
+  // En la landing sin sesión no hay página interna a la que navegar:
+  // se ocultan las opciones internas y quedan solo "Registrarse" e
+  // "Iniciar sesión".
+  if (!enPaginaInterna && !haySesionActiva) {
+    document.querySelector(".navbar-nav")?.classList.add("d-none");
+  }
+
   // Cerrar sesión: borra solo upc_sesion y redirige a login
   const botonSalir = document.getElementById("btnCerrarSesion");
   if (botonSalir) {
