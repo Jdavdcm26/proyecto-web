@@ -26,3 +26,19 @@ function filtrarOportunidades(lista, texto, modalidad) {
     return coincideBusqueda && coincideModalidad;
   });
 }
+
+
+/* Filtra usuarios de la red por texto libre (nombre, carrera
+   o alguna habilidad) y por rol (Estudiante, Egresado, etc.). */
+function filtrarUsuarios(lista, texto, rol) {
+  return lista.filter((u) => {
+    const coincideBusqueda =
+      coincideTexto(u.nombre, texto) ||
+      coincideTexto(u.carrera, texto) ||
+      (u.habilidades || []).some((h) => coincideTexto(h, texto));
+
+    const coincideRol = !rol || u.rol === rol;
+
+    return coincideBusqueda && coincideRol;
+  });
+}
