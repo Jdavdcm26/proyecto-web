@@ -52,7 +52,24 @@
         <div id="feedContainer"></div>
       </div>
     </section>
-  </main>
+    </main>
+
+  <!-- Modal genérico de confirmación (reutilizable) -->
+  <div class="modal fade" id="modalConfirmar" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirmar acción</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body" id="modalConfirmarTexto"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-upc-outline" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-upc-solid" id="modalConfirmarBoton">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer class="footer-upc mt-4">
     <div class="container py-4 text-center small text-muted">© 2026 UPC Connect · Universidad Popular del Cesar</div>
