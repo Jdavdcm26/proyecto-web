@@ -36,12 +36,26 @@ function renderPortafolio() {
     )
     .join("");
 
-  contenedor.querySelectorAll("[data-proyecto]").forEach((btn) => {
+    contenedor.querySelectorAll("[data-proyecto]").forEach((btn) => {
     btn.addEventListener("click", () => {
       const p = proyectos.find((pr) => pr.id == btn.dataset.proyecto);
-      alert(`Proyecto: ${p.nombre}\nAutor: ${p.autor}\nTecnologías: ${p.tecnologias.join(", ")}`);
+      if (!p) return;
+      mostrarDetalleProyecto(p);
     });
   });
+}
+
+/* Rellena y muestra el modal con la info del proyecto seleccionado. */
+function mostrarDetalleProyecto(p) {
+  document.getElementById("modalProyectoTitulo").textContent = p.nombre;
+  document.getElementById("modalProyectoAutor").textContent = p.autor;
+  document.getElementById("modalProyectoDescripcion").textContent = p.descripcion;
+  document.getElementById("modalProyectoTecnologias").innerHTML = p.tecnologias
+    .map((t) => `<span class="skill-tag">${t}</span>`)
+    .join("");
+
+  const modal = new bootstrap.Modal(document.getElementById("modalDetalleProyecto"));
+  modal.show();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
