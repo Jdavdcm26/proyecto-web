@@ -11,7 +11,7 @@ function renderRed() {
   const sesion = usuarioSesion();
   if (!sesion) return;
 
-    const todos = (obtener(CLAVES.USUARIOS) || []).filter((u) => u.id != sesion.id);
+  const todos = (obtener(CLAVES.USUARIOS) || []).filter((u) => u.id != sesion.id);
 
   const texto = document.getElementById("buscarUsuario")?.value || "";
   const rol = document.getElementById("filtroRol")?.value || "";
@@ -34,13 +34,26 @@ function renderRed() {
             .map((h) => `<span class="skill-tag">${h}</span>`)
             .join("")}
         </div>
-        <button class="btn btn-upc-outline w-100 mt-auto" data-conectar="${u.id}">
-          Conectar
-        </button>
+        <div class="d-flex gap-2 mt-auto">
+          <button class="btn btn-upc-outline flex-fill" data-verperfil="${u.id}">
+            Ver perfil
+          </button>
+          <button class="btn btn-upc-solid flex-fill" data-conectar="${u.id}">
+            Conectar
+          </button>
+        </div>
       </div>
     </div>`
     )
     .join("");
+
+  contenedor.querySelectorAll("[data-verperfil]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const destino = usuarios.find((u) => u.id == btn.dataset.verperfil);
+      if (!destino) return;
+      mostrarPerfilUsuario(destino);
+    });
+  });
 
   contenedor.querySelectorAll("[data-conectar]").forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -60,6 +73,21 @@ function renderRed() {
       btn.disabled = true;
     });
   });
+}
+
+/* Rellena y muestra el modal con el perfil del usuario seleccionado. */
+function mostrarPerfilUsuario(u) {
+  document.getElementById("modalPerfilAvatar").textContent = u.iniciales;
+  document.getElementById("modalPerfilAvatar").style.background = u.color;
+  document.getElementById("modalPerfilNombre").textContent = u.nombre;
+  document.getElementById("modalPerfilCarrera").textContent = u.carrera;
+  document.getElementById("modalPerfilRol").textContent = u.rol;
+  document.getElementById("modalPerfilHabilidades").innerHTML = (u.habilidades || [])
+    .map((h) => `<span class="skill-tag">${h}</span>`)
+    .join("");
+
+  const modal = new bootstrap.Modal(document.getElementById("modalPerfilUsuario"));
+  modal.show();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
