@@ -6,12 +6,19 @@
    -------------------------------------------------- */
 function renderOportunidades() {
   const contenedor = document.getElementById("oportunidadesContainer");
+  const vacio = document.getElementById("oportunidadesVacio");
   if (!contenedor) return;
 
   const usuario = usuarioSesion();
   if (!usuario) return;
 
-  contenedor.innerHTML = oportunidades
+  const texto = document.getElementById("buscarOportunidad")?.value || "";
+  const modalidad = document.getElementById("filtroModalidad")?.value || "";
+  const lista = filtrarOportunidades(oportunidades, texto, modalidad);
+
+  vacio.classList.toggle("d-none", lista.length > 0);
+
+  contenedor.innerHTML = lista
     .map((op) => {
       const compatibilidad = calcularCompatibilidad(
         usuario.habilidades || [],
@@ -92,4 +99,7 @@ function mostrarDetalleOportunidad(op) {
 document.addEventListener("DOMContentLoaded", () => {
   if (!protegerPagina()) return;
   renderOportunidades();
+
+  document.getElementById("buscarOportunidad")?.addEventListener("input", renderOportunidades);
+  document.getElementById("filtroModalidad")?.addEventListener("change", renderOportunidades);
 });
