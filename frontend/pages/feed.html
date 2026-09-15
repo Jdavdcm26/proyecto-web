@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feed | UPC Connect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../css/style.css" rel="stylesheet" />
+</head>
+<body>
+
+  <header class="navbar-upc">
+    <div class="navbar-inner">
+      <nav class="navbar navbar-expand-lg p-0">
+        <div class="container-fluid p-0">
+          <a class="navbar-brand" href="../index.html"><span class="logo-badge">UPC</span> Connect</a>
+          <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarUpc">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarUpc">
+            <ul class="navbar-nav mx-auto gap-lg-2">
+              <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
+              <li class="nav-item"><a class="nav-link" href="red.html" data-pagina="red.html">Mi Red</a></li>
+              <li class="nav-item"><a class="nav-link" href="oportunidades.html" data-pagina="oportunidades.html">Oportunidades</a></li>
+              <li class="nav-item"><a class="nav-link" href="dashboard.html" data-pagina="dashboard.html">Dashboard</a></li>
+            </ul>
+            <div class="d-flex gap-2 mt-3 mt-lg-0">
+              <a href="perfil.html" class="btn btn-upc-solid">Mi perfil</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="container" style="max-width:640px;">
+        <p class="eyebrow">Comunidad UPC</p>
+        <h1 class="mt-2 mb-4">Feed</h1>
+
+        <div class="card-upc p-3 mb-4">
+          <form id="formPublicar">
+            <textarea class="form-control mb-3" id="nuevaPublicacion" rows="2" placeholder="¿Qué quieres compartir hoy?" style="border-radius:14px;"></textarea>
+            <button type="submit" class="btn btn-upc-solid btn-sm">Publicar</button>
+          </form>
+        </div>
+
+        <div id="feedContainer"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-upc mt-4">
+    <div class="container py-4 text-center small text-muted">© 2026 UPC Connect · Universidad Popular del Cesar</div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/feed.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
