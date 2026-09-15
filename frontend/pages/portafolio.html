@@ -47,18 +47,19 @@
     </section>
         <section class="pb-3 pt-0">
       <div class="container">
-        <input type="text" class="form-control" id="buscarProyecto" placeholder="Buscar por nombre, descripción o tecnología..." />
+                <div class="d-flex gap-2 mb-3">
+          <input type="text" class="form-control" id="buscarProyecto" placeholder="Buscar por nombre, descripción o tecnología..." />
+          <button class="btn btn-upc-solid text-nowrap" data-bs-toggle="modal" data-bs-target="#modalProyectoForm" id="btnNuevoProyecto">+ Agregar proyecto</button>
+        </div>
       </div>
     </section>
-    <section class="pt-0">
+        <section class="pt-0">
       <div class="container">
         <div class="row g-4" id="portafolioContainer"></div>
         <p class="text-muted text-center mt-4 d-none" id="portafolioVacio">No encontramos proyectos que coincidan con tu búsqueda.</p>
       </div>
     </section>
   </main>
-
-   </main>
 
   <!-- Modal: Ver detalle de un proyecto -->
   <div class="modal fade" id="modalDetalleProyecto" tabindex="-1" aria-hidden="true">
@@ -75,6 +76,64 @@
         </div>
       </div>
     </div>
+    </div>
+
+  <!-- Modal: Formulario para agregar/editar proyecto propio -->
+  <div class="modal fade" id="modalProyectoForm" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalProyectoFormTitulo">Agregar proyecto</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <form id="formProyecto">
+          <div class="modal-body">
+            <input type="hidden" id="proyectoId" />
+            <div class="mb-3">
+              <label class="form-label small fw-bold">Nombre del proyecto</label>
+              <input type="text" class="form-control" id="proyectoNombre" required />
+            </div>
+            <div class="mb-3">
+              <label class="form-label small fw-bold">Descripción</label>
+              <textarea class="form-control" id="proyectoDescripcion" rows="2" required></textarea>
+            </div>
+            <div class="mb-3">
+              <label class="form-label small fw-bold">Tecnologías (separadas por coma)</label>
+              <input type="text" class="form-control" id="proyectoTecnologias" placeholder="HTML, CSS, JavaScript" required />
+            </div>
+            <div class="mb-3">
+              <label class="form-label small fw-bold">Enlace a GitHub (opcional)</label>
+              <input type="url" class="form-control" id="proyectoGithub" placeholder="https://github.com/..." />
+            </div>
+            <div class="mb-3">
+              <label class="form-label small fw-bold">Enlace a demo (opcional)</label>
+              <input type="url" class="form-control" id="proyectoDemo" placeholder="https://..." />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-upc-outline" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-upc-solid">Guardar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal genérico de confirmación (eliminar proyecto) -->
+  <div class="modal fade" id="modalConfirmar" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirmar acción</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body" id="modalConfirmarTexto"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-upc-outline" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-upc-solid" id="modalConfirmarBoton">Eliminar</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <footer class="footer-upc mt-4">
@@ -85,6 +144,7 @@
   <script src="../js/data.js"></script>
   <script src="../js/storage.js"></script>
     <script src="../js/search.js"></script>
+    <script src="../js/utils.js"></script>
   <script src="../js/portafolio.js"></script>
   <script src="../js/main.js"></script>
 </body>
