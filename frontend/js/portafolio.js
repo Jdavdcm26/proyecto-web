@@ -87,6 +87,8 @@ function renderPortafolio() {
       });
     });
   });
+
+  renderizarRepositorios(usuarioActual.githubUser, "portafolioGithubRepos");
 }
 
 /* Rellena y muestra el modal con la info del proyecto seleccionado (solo lectura). */
