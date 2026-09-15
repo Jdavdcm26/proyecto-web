@@ -29,7 +29,7 @@ const semillaUsuarios = [
       "Estudiante de Ingeniería de Sistemas apasionado por el desarrollo web y las nuevas tecnologías. Buscando prácticas profesionales para aplicar lo aprendido.",
     habilidades: ["HTML", "CSS", "JavaScript", "Bootstrap", "Git"],
     proyectosDestacados: [1, 2],
-    githubUser: "jdavdcm",
+    githubUser: "Jdavdcm26",
   },
   {
     id: 1,
