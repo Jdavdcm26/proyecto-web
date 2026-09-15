@@ -91,15 +91,21 @@ section {
   border-radius: var(--radius-sm);
   font-weight: 700;
   padding: 0.7rem 1.4rem;
-  transition: 0.2s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
 }
 .btn-upc-solid:hover {
   background-color: var(--primary-dark);
   border-color: var(--primary-dark);
   color: var(--white);
 }
+/* :active = mientras el usuario mantiene presionado el botón (feedback táctil) */
+.btn-upc-solid:active {
+  transform: scale(0.97);
+}
 .btn-upc-solid:disabled {
-  opacity: 0.7;
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
 }
 
 .btn-upc-outline {
@@ -109,14 +115,19 @@ section {
   border-radius: var(--radius-sm);
   font-weight: 700;
   padding: 0.7rem 1.4rem;
-  transition: 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
 }
 .btn-upc-outline:hover {
   background-color: var(--secondary-color);
   color: var(--primary-color);
 }
+.btn-upc-outline:active {
+  transform: scale(0.97);
+}
 .btn-upc-outline:disabled {
-  opacity: 0.7;
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
 }
 
 /* ==================================================
@@ -259,12 +270,15 @@ section {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-card);
-  transition: 0.2s ease;
+  /* Se listan las propiedades explícitas (en vez de "transition: 0.2s ease" genérico)
+     para que solo animen transform, sombra y borde — más control y más fácil de explicar */
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .card-upc:hover {
   transform: translateY(-4px);
-  box-shadow: 0 16px 32px rgba(0, 104, 55, 0.1);
+  border-color: var(--accent-color);
+  box-shadow: 0 18px 36px rgba(0, 104, 55, 0.14);
 }
 
 .icon-box {
@@ -356,6 +370,9 @@ section {
   height: 8px;
   border-radius: 999px;
   background: var(--background-color);
+  /* Sombra hacia adentro para que el "track" se vea como un canal hundido,
+     no como un rectángulo plano */
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06);
   overflow: hidden;
 }
 .progress-upc-bar {
@@ -419,24 +436,33 @@ section {
 /* ==================================================
    FORMULARIOS (login / registro)
    ================================================== */
-.form-upc {
-  background: var(--white);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  padding: 40px;
-  box-shadow: var(--shadow-card);
-}
-
 .form-upc .form-control,
 .form-upc .form-select {
   border-radius: var(--radius-sm);
   padding: 0.65rem 0.9rem;
   border: 1px solid var(--border-color);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 .form-upc .form-control:focus,
 .form-upc .form-select:focus {
   border-color: var(--primary-color);
   box-shadow: 0 0 0 3px rgba(0, 104, 55, 0.12);
+}
+/* Bootstrap agrega la clase "is-invalid" automáticamente cuando un campo
+   falla la validación (o nosotros la agregamos a mano en auth.js).
+   Antes no tenía estilo propio dentro de .form-upc — solo el borde rojo
+   por defecto de Bootstrap, muy sutil. Aquí lo reforzamos. */
+.form-upc .form-control.is-invalid,
+.form-upc .form-select.is-invalid {
+  border-color: #d64545;
+}
+.form-upc .form-control.is-invalid:focus,
+.form-upc .form-select.is-invalid:focus {
+  box-shadow: 0 0 0 3px rgba(214, 69, 69, 0.15);
+}
+.form-upc .invalid-feedback {
+  font-weight: 600;
+  color: #d64545;
 }
 
 /* ==================================================
