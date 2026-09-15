@@ -29,6 +29,7 @@ const semillaUsuarios = [
       "Estudiante de Ingeniería de Sistemas apasionado por el desarrollo web y las nuevas tecnologías. Buscando prácticas profesionales para aplicar lo aprendido.",
     habilidades: ["HTML", "CSS", "JavaScript", "Bootstrap", "Git"],
     proyectosDestacados: [1, 2],
+    githubUser: "jdavdcm",
   },
   {
     id: 1,
@@ -40,6 +41,7 @@ const semillaUsuarios = [
     rol: "Egresada",
     habilidades: ["JavaScript", "React", "Node.js"],
     color: "#006837",
+    githubUser: "",
   },
   {
     id: 2,
@@ -53,6 +55,7 @@ const semillaUsuarios = [
     habilidades: ["HTML", "CSS", "Bootstrap"],
     proyectosDestacados: [],
     color: "#174a91",
+    githubUser: "",
   },
   {
     id: 3,
@@ -66,6 +69,7 @@ const semillaUsuarios = [
     habilidades: ["Excel", "Gestión de proyectos", "Power BI"],
     proyectosDestacados: [],
     color: "#8a5c28",
+    githubUser: "",
   },
   {
     id: 4,
@@ -79,6 +83,7 @@ const semillaUsuarios = [
     habilidades: ["Java", "Python", "Bases de datos"],
     proyectosDestacados: [],
     color: "#004D28",
+    githubUser: "",
   },
   {
     id: 5,
@@ -92,6 +97,7 @@ const semillaUsuarios = [
     habilidades: ["JavaScript", "SQL", "Metodologías ágiles"],
     proyectosDestacados: [],
     color: "#006837",
+    githubUser: "",
   },
   {
     id: 6,
@@ -105,6 +111,7 @@ const semillaUsuarios = [
     habilidades: ["HTML", "CSS", "JavaScript", "UX/UI"],
     proyectosDestacados: [],
     color: "#79b98d",
+    githubUser: "",
   },
 ];
 
