@@ -8,10 +8,13 @@ function renderOportunidades() {
   const contenedor = document.getElementById("oportunidadesContainer");
   if (!contenedor) return;
 
+  const usuario = usuarioSesion();
+  if (!usuario) return;
+
   contenedor.innerHTML = oportunidades
     .map((op) => {
       const compatibilidad = calcularCompatibilidad(
-        usuarioActual.habilidades,
+        usuario.habilidades || [],
         op.habilidadesRequeridas
       );
       const claseColor = colorCompatibilidad(compatibilidad);
@@ -49,11 +52,21 @@ function renderOportunidades() {
 
    contenedor.querySelectorAll("[data-postular]").forEach((btn) => {
     btn.addEventListener("click", () => {
+      const op = oportunidades.find((o) => o.id == btn.dataset.postular);
+      if (!op) return;
+      const usuario = usuarioSesion();
+      if (!usuario) return;
+      agregar(CLAVES.POSTULACIONES, {
+        oportunidadId: op.id,
+        titulo: op.titulo,
+        empresa: op.empresa,
+        fecha: new Date().toISOString(),
+      });
       btn.textContent = "¡Postulación enviada!";
       btn.disabled = true;
       btn.classList.remove("btn-upc-solid");
       btn.classList.add("btn-upc-outline");
-      mostrarToast("Tu postulación fue enviada correctamente.");
+      mostrarToast("Tu postulación fue enviada y guardada.");
     });
   });
 
@@ -77,5 +90,6 @@ function mostrarDetalleOportunidad(op) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  if (!protegerPagina()) return;
   renderOportunidades();
 });

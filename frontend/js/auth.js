@@ -1,8 +1,36 @@
 /* ==================================================
    AUTH.JS
-   Lógica de Login y Registro (simulados, sin backend).
+   Lógica de Login y Registro contra upc_usuarios
+   (persistencia local vía storage.js).
    Responsable: Mario (Bloque A)
    ================================================== */
+
+function mostrarMensaje(elementoId, texto, esError) {
+  const mensaje = document.getElementById(elementoId);
+  mensaje.classList.remove("d-none", "alert-success", "alert-danger");
+  mensaje.classList.add(esError ? "alert-danger" : "alert-success");
+  mensaje.textContent = texto;
+}
+
+function inicialesDesdeNombre(nombre) {
+  return nombre
+    .trim()
+    .split(/\s+/)
+    .filter((p) => /^[A-Za-zÁÉÍÓÚáéíóúÑñ]/.test(p))
+    .slice(0, 2)
+    .map((p) => p[0].toUpperCase())
+    .join("");
+}
+
+function rolDesdeTipo(tipo) {
+  const roles = {
+    estudiante: "Estudiante",
+    egresado: "Egresado",
+    docente: "Docente",
+    empresa: "Empresa",
+  };
+  return roles[tipo] || "Estudiante";
+}
 
 function inicializarLogin() {
   const form = document.getElementById("formLogin");
@@ -30,9 +58,24 @@ function inicializarLogin() {
 
     if (!valido) return;
 
-    const mensaje = document.getElementById("loginMensaje");
-    mensaje.classList.remove("d-none");
-    mensaje.textContent = "Inicio de sesión simulado correctamente. Redirigiendo...";
+    const usuarios = obtener(CLAVES.USUARIOS) || [];
+    const usuario = usuarios.find(
+      (u) =>
+        u.correo.trim().toLowerCase() === correo.value.trim().toLowerCase() &&
+        u.clave === clave.value.trim()
+    );
+
+    if (!usuario) {
+      mostrarMensaje("loginMensaje", "Correo o contraseña incorrectos.", true);
+      return;
+    }
+
+    guardarSesion(usuario.id);
+    mostrarMensaje(
+      "loginMensaje",
+      `¡Hola, ${usuario.nombre}! Inicio de sesión correcto. Redirigiendo...`,
+      false
+    );
 
     setTimeout(() => {
       window.location.href = "feed.html";
@@ -91,10 +134,53 @@ function inicializarRegistro() {
 
     if (!valido) return;
 
-    const mensaje = document.getElementById("registroMensaje");
-    mensaje.classList.remove("d-none");
-    mensaje.textContent = "Registro simulado correctamente.";
+    const usuarios = obtener(CLAVES.USUARIOS) || [];
+    const correoNormalizado = correo.value.trim().toLowerCase();
+    const correoDuplicado = usuarios.some(
+      (u) => u.correo && u.correo.trim().toLowerCase() === correoNormalizado
+    );
+
+    if (correoDuplicado) {
+      mostrarMensaje(
+        "registroMensaje",
+        "Ya existe una cuenta con ese correo. Prueba iniciar sesión.",
+        true
+      );
+      correo.classList.add("is-invalid");
+      return;
+    }
+
+    /* Deuda técnica: la contraseña se guarda en texto plano
+       porque esto es un mock sin backend. Ver nota al final
+       de data.js. */
+    const tipo = tipoUsuario.value;
+    const usuarioNuevo = {
+      nombre: nombre.value.trim(),
+      correo: correoNormalizado,
+      clave: clave.value.trim(),
+      rol: rolDesdeTipo(tipo),
+      carrera: tipo === "empresa" ? "Empresa de tecnología" : "",
+      universidad: "Universidad Popular del Cesar",
+      iniciales: inicialesDesdeNombre(nombre.value),
+      color: "#006837",
+      descripcion: "",
+      habilidades: [],
+      proyectosDestacados: [],
+    };
+
+    const usuarioCreado = agregar(CLAVES.USUARIOS, usuarioNuevo);
+    guardarSesion(usuarioCreado.id);
+
+    mostrarMensaje(
+      "registroMensaje",
+      "Cuenta creada correctamente. Nosotros te logueamos, redirigiendo...",
+      false
+    );
     form.reset();
+
+    setTimeout(() => {
+      window.location.href = "feed.html";
+    }, 1200);
   });
 }
 

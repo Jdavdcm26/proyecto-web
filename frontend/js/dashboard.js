@@ -45,5 +45,6 @@ function renderDashboard() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  if (!protegerPagina()) return;
   renderDashboard();
 });

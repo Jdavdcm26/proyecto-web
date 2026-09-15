@@ -6,6 +6,8 @@ function renderPortafolio() {
   const contenedor = document.getElementById("portafolioContainer");
   if (!contenedor) return;
 
+  const proyectos = obtener(CLAVES.PORTAFOLIO) || [];
+
   contenedor.innerHTML = proyectos
     .map(
       (p) => `
@@ -37,5 +39,6 @@ function renderPortafolio() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  if (!protegerPagina()) return;
   renderPortafolio();
 });
