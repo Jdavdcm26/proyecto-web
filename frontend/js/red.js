@@ -11,7 +11,14 @@ function renderRed() {
   const sesion = usuarioSesion();
   if (!sesion) return;
 
-  const usuarios = (obtener(CLAVES.USUARIOS) || []).filter((u) => u.id != sesion.id);
+    const todos = (obtener(CLAVES.USUARIOS) || []).filter((u) => u.id != sesion.id);
+
+  const texto = document.getElementById("buscarUsuario")?.value || "";
+  const rol = document.getElementById("filtroRol")?.value || "";
+  const usuarios = filtrarUsuarios(todos, texto, rol);
+
+  const vacio = document.getElementById("redVacio");
+  vacio.classList.toggle("d-none", usuarios.length > 0);
 
   contenedor.innerHTML = usuarios
     .map(
@@ -58,4 +65,7 @@ function renderRed() {
 document.addEventListener("DOMContentLoaded", () => {
   if (!protegerPagina()) return;
   renderRed();
+
+  document.getElementById("buscarUsuario")?.addEventListener("input", renderRed);
+  document.getElementById("filtroRol")?.addEventListener("change", renderRed);
 });
