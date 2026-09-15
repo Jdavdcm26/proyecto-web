@@ -7,7 +7,7 @@
    data.js pasa a ser solo la semilla inicial.
    ================================================== */
 
-const VERSION_ACTUAL = 2;
+const VERSION_ACTUAL = 3;
 const PREFIJO = "upc_";
 
 /* Claves namespaced para no chocar con otras apps

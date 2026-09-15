@@ -40,10 +40,12 @@ function renderPerfil() {
   const formEditar = document.getElementById("formEditarPerfil");
   if (formEditar) {
     document.getElementById("editDescripcion").value = usuario.descripcion;
+    document.getElementById("editGithubUser").value = usuario.githubUser || "";
     formEditar.addEventListener("submit", (e) => {
       e.preventDefault();
       const nuevaDescripcion = document.getElementById("editDescripcion").value.trim();
-      actualizar(CLAVES.USUARIOS, usuario.id, { descripcion: nuevaDescripcion });
+      const nuevoGithub = document.getElementById("editGithubUser").value.trim();
+      actualizar(CLAVES.USUARIOS, usuario.id, { descripcion: nuevaDescripcion, githubUser: nuevoGithub });
       renderPerfil();
       const modalEl = document.getElementById("modalEditarPerfil");
       if (modalEl) {
@@ -53,6 +55,8 @@ function renderPerfil() {
       mostrarToast("Perfil actualizado y guardado en este navegador.");
     });
   }
+
+  renderizarRepositorios(usuario.githubUser, "perfilGithubRepos");
 }
 
 document.addEventListener("DOMContentLoaded", () => {
