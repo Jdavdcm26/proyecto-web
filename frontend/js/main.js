@@ -37,6 +37,12 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
+  // Un usuario con sesión activa nunca ve la landing: se redirige al feed.
+  if (!enPaginaInterna && haySesionActiva) {
+    window.location.replace("pages/feed.html");
+    return;
+  }
+
   // En la landing sin sesión no hay página interna a la que navegar:
   // se ocultan las opciones internas y quedan solo "Registrarse" e
   // "Iniciar sesión".
