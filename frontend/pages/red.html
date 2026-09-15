@@ -69,7 +69,26 @@
         <p class="text-muted text-center mt-4 d-none" id="redVacio">No encontramos personas que coincidan con tu búsqueda.</p>
       </div>
     </section>
-  </main>
+    </main>
+
+  <!-- Modal: Ver perfil de otro usuario -->
+  <div class="modal fade" id="modalPerfilUsuario" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Perfil</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body text-center">
+          <div class="avatar-circle mx-auto mb-3" id="modalPerfilAvatar"></div>
+          <h6 class="fw-bold mb-1" id="modalPerfilNombre"></h6>
+          <p class="text-muted small mb-1" id="modalPerfilCarrera"></p>
+          <span class="badge-upc mb-3" id="modalPerfilRol"></span>
+          <div class="d-flex flex-wrap justify-content-center gap-2 mt-3" id="modalPerfilHabilidades"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer class="footer-upc mt-4">
     <div class="container py-4 text-center small text-muted">© 2026 UPC Connect · Universidad Popular del Cesar</div>
@@ -78,6 +97,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../js/data.js"></script>
   <script src="../js/storage.js"></script>
+    <script src="../js/search.js"></script>
   <script src="../js/red.js"></script>
   <script src="../js/main.js"></script>
 </body>
