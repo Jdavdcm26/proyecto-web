@@ -45,9 +45,28 @@
         <p class="text-muted">Conecta con estudiantes, egresados, docentes y empresas de la comunidad UPC.</p>
       </div>
     </section>
+        <section class="pb-3 pt-0">
+      <div class="container">
+        <div class="row g-2 mb-4">
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="buscarUsuario" placeholder="Buscar por nombre, carrera o habilidad..." />
+          </div>
+          <div class="col-md-4">
+            <select class="form-select" id="filtroRol">
+              <option value="">Todos los roles</option>
+              <option value="Estudiante">Estudiante</option>
+              <option value="Egresado">Egresado</option>
+              <option value="Docente">Docente</option>
+              <option value="Empresa">Empresa</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </section>
     <section class="pt-0">
       <div class="container">
         <div class="row g-4" id="redContainer"></div>
+        <p class="text-muted text-center mt-4 d-none" id="redVacio">No encontramos personas que coincidan con tu búsqueda.</p>
       </div>
     </section>
   </main>
