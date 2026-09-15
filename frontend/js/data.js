@@ -1,31 +1,40 @@
 /* ==================================================
    DATA.JS
-   Aquí viven TODOS los datos simulados de UPC Connect.
-   Como todavía no hay backend ni base de datos, esta
-   información se maneja con arrays y objetos de JS.
+   Semillas y catálogos de UPC Connect.
+   Este archivo ya NO es la fuente de verdad: storage.js
+   copia estos datos a localStorage la primera vez.
+   Los arrays de aquí no deben modificarse en tiempo de
+   ejecución; toda mutación pasa por storage.js.
    ================================================== */
 
-/* Usuario que está "logueado" en la demo. Sirve para la
-   página de perfil y para calcular UPC Talent Match. */
-const usuarioActual = {
-  id: 0,
-  nombre: "José Castro",
-  carrera: "Ingeniería de Sistemas",
-  rol: "Estudiante",
-  universidad: "Universidad Popular del Cesar",
-  iniciales: "JC",
-  descripcion:
-    "Estudiante de Ingeniería de Sistemas apasionado por el desarrollo web y las nuevas tecnologías. Buscando prácticas profesionales para aplicar lo aprendido.",
-  habilidades: ["HTML", "CSS", "JavaScript", "Bootstrap", "Git"],
-  proyectosDestacados: [1, 2],
-};
-
-/* Miembros de la red profesional (estudiantes, egresados,
-   docentes y empresas) */
-const usuarios = [
+/* --------------------------------------------------
+   SEMILLA: USUARIOS
+   La red profesional (estudiantes, egresados, docentes
+   y empresas) + el usuario demo. Incluye credenciales
+   mock para poder hacer login (ver nota de deuda
+   técnica al final del archivo).
+   -------------------------------------------------- */
+const semillaUsuarios = [
+  {
+    id: 0,
+    nombre: "José Castro",
+    correo: "jose@unicesar.edu.co",
+    clave: "123456",
+    carrera: "Ingeniería de Sistemas",
+    rol: "Estudiante",
+    universidad: "Universidad Popular del Cesar",
+    iniciales: "JC",
+    color: "#006837",
+    descripcion:
+      "Estudiante de Ingeniería de Sistemas apasionado por el desarrollo web y las nuevas tecnologías. Buscando prácticas profesionales para aplicar lo aprendido.",
+    habilidades: ["HTML", "CSS", "JavaScript", "Bootstrap", "Git"],
+    proyectosDestacados: [1, 2],
+  },
   {
     id: 1,
     nombre: "Laura Martínez",
+    correo: "laura@unicesar.edu.co",
+    clave: "123456",
     iniciales: "LM",
     carrera: "Ingeniería de Sistemas",
     rol: "Egresada",
@@ -35,46 +44,66 @@ const usuarios = [
   {
     id: 2,
     nombre: "Andrés Mejía",
+    correo: "andres@unicesar.edu.co",
+    clave: "123456",
     iniciales: "AM",
     carrera: "Ingeniería de Sistemas",
     rol: "Estudiante",
+    universidad: "Universidad Popular del Cesar",
     habilidades: ["HTML", "CSS", "Bootstrap"],
+    proyectosDestacados: [],
     color: "#174a91",
   },
   {
     id: 3,
     nombre: "Valentina Cárdenas",
+    correo: "valentina@unicesar.edu.co",
+    clave: "123456",
     iniciales: "VC",
     carrera: "Ingeniería Industrial",
     rol: "Estudiante",
+    universidad: "Universidad Popular del Cesar",
     habilidades: ["Excel", "Gestión de proyectos", "Power BI"],
+    proyectosDestacados: [],
     color: "#8a5c28",
   },
   {
     id: 4,
     nombre: "Juan Pablo Rojas",
+    correo: "juanpablo@unicesar.edu.co",
+    clave: "123456",
     iniciales: "JP",
     carrera: "Docente - Programación",
     rol: "Docente",
+    universidad: "Universidad Popular del Cesar",
     habilidades: ["Java", "Python", "Bases de datos"],
+    proyectosDestacados: [],
     color: "#004D28",
   },
   {
     id: 5,
     nombre: "TecnoCaribe S.A.S",
+    correo: "contacto@tecnocaribe.co",
+    clave: "123456",
     iniciales: "TC",
     carrera: "Empresa de tecnología",
     rol: "Empresa",
+    universidad: "TecnoCaribe S.A.S",
     habilidades: ["JavaScript", "SQL", "Metodologías ágiles"],
+    proyectosDestacados: [],
     color: "#006837",
   },
   {
     id: 6,
     nombre: "Camila Herrera",
+    correo: "camila@unicesar.edu.co",
+    clave: "123456",
     iniciales: "CH",
     carrera: "Ingeniería de Sistemas",
     rol: "Egresada",
+    universidad: "Universidad Popular del Cesar",
     habilidades: ["HTML", "CSS", "JavaScript", "UX/UI"],
+    proyectosDestacados: [],
     color: "#79b98d",
   },
 ];
@@ -129,7 +158,7 @@ const oportunidades = [
 ];
 
 /* Proyectos publicados en el portafolio de la comunidad */
-const proyectos = [
+const semillaProyectos = [
   {
     id: 1,
     nombre: "UPC Connect",
@@ -213,7 +242,7 @@ const mentores = [
 ];
 
 /* Publicaciones del feed de la comunidad */
-const publicaciones = [
+const semillaPublicaciones = [
   {
     id: 1,
     usuario: "Laura Martínez",
@@ -278,3 +307,13 @@ const indicadoresDashboard = {
     { etiqueta: "Empresas", valor: 450 },
   ],
 };
+
+/* --------------------------------------------------
+   DEUDA TÉCNICA (anotada, no bloqueante)
+   registro.html guarda la contraseña en texto plano
+   dentro de upc_usuarios, igual que estos usuarios
+   semilla, porque todo sigue siendo mock sin backend.
+   Cuando exista backend real hay que migrar a
+   contraseñas hasheadas: esto no debe convertirse en
+   "la forma normal" de guardar contraseñas del proyecto.
+   -------------------------------------------------- */
