@@ -42,3 +42,14 @@ function filtrarUsuarios(lista, texto, rol) {
     return coincideBusqueda && coincideRol;
   });
 }
+
+/* Filtra proyectos del portafolio por texto libre
+   (nombre, descripción o alguna tecnología usada). */
+function filtrarProyectos(lista, texto) {
+  return lista.filter(
+    (p) =>
+      coincideTexto(p.nombre, texto) ||
+      coincideTexto(p.descripcion, texto) ||
+      (p.tecnologias || []).some((t) => coincideTexto(t, texto))
+  );
+}
