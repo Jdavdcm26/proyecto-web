@@ -1,25 +1,31 @@
 /* ==================================================
    PERFIL.JS
    Render de la página Perfil (pages/perfil.html)
+   Los datos vienen de la sesión activa (upc_usuarios)
+   y las ediciones se persisten vía storage.js.
    ================================================== */
 function renderPerfil() {
   const contenedor = document.getElementById("perfilContainer");
   if (!contenedor) return;
 
-  document.getElementById("perfilIniciales").textContent = usuarioActual.iniciales;
-  document.getElementById("perfilNombre").textContent = usuarioActual.nombre;
-  document.getElementById("perfilRol").textContent = `${usuarioActual.rol} · ${usuarioActual.carrera}`;
-  document.getElementById("perfilUniversidad").textContent = usuarioActual.universidad;
-  document.getElementById("perfilDescripcion").textContent = usuarioActual.descripcion;
+  const usuario = usuarioSesion();
+  if (!usuario) return;
 
-  document.getElementById("perfilHabilidades").innerHTML = usuarioActual.habilidades
+  document.getElementById("perfilIniciales").textContent = usuario.iniciales;
+  document.getElementById("perfilNombre").textContent = usuario.nombre;
+  document.getElementById("perfilRol").textContent = `${usuario.rol} · ${usuario.carrera}`;
+  document.getElementById("perfilUniversidad").textContent = usuario.universidad;
+  document.getElementById("perfilDescripcion").textContent = usuario.descripcion;
+
+  document.getElementById("perfilHabilidades").innerHTML = (usuario.habilidades || [])
     .map((h) => `<span class="skill-tag">${h}</span>`)
     .join("");
 
-  const proyectosDestacados = proyectos.filter((p) =>
-    usuarioActual.proyectosDestacados.includes(p.id)
+  const proyectos = obtener(CLAVES.PORTAFOLIO) || [];
+  const destacados = proyectos.filter((p) =>
+    (usuario.proyectosDestacados || []).includes(p.id)
   );
-  document.getElementById("perfilProyectos").innerHTML = proyectosDestacados
+  document.getElementById("perfilProyectos").innerHTML = destacados
     .map(
       (p) => `
       <div class="col-md-6">
@@ -33,15 +39,18 @@ function renderPerfil() {
 
   const formEditar = document.getElementById("formEditarPerfil");
   if (formEditar) {
-    document.getElementById("editDescripcion").value = usuarioActual.descripcion;
+    document.getElementById("editDescripcion").value = usuario.descripcion;
     formEditar.addEventListener("submit", (e) => {
       e.preventDefault();
-      usuarioActual.descripcion = document.getElementById("editDescripcion").value.trim();
+      const nuevaDescripcion = document.getElementById("editDescripcion").value.trim();
+      actualizar(CLAVES.USUARIOS, usuario.id, { descripcion: nuevaDescripcion });
       renderPerfil();
       const modalEl = document.getElementById("modalEditarPerfil");
-      const modal = bootstrap.Modal.getInstance(modalEl);
-      modal.hide();
-      mostrarToast("Perfil actualizado (simulado, no se guarda en servidor).");
+      if (modalEl) {
+        const modal = bootstrap.Modal.getInstance(modalEl);
+        if (modal) modal.hide();
+      }
+      mostrarToast("Perfil actualizado y guardado en este navegador.");
     });
   }
 }

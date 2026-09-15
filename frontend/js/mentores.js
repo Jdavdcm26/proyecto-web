@@ -32,11 +32,22 @@ function renderMentores() {
   contenedor.querySelectorAll("[data-mentoria]").forEach((btn) => {
     btn.addEventListener("click", () => {
       const m = mentores.find((me) => me.id == btn.dataset.mentoria);
+      if (!m) return;
+      const usuario = usuarioSesion();
+      if (!usuario) return;
+      agregar(CLAVES.MENTORIAS, {
+        mentorId: m.id,
+        nombre: m.nombre,
+        area: m.area,
+        profesion: m.profesion,
+        solicitadoPor: usuario.nombre,
+        fecha: new Date().toISOString(),
+      });
       btn.textContent = "Solicitud enviada ✓";
       btn.disabled = true;
       btn.classList.remove("btn-upc-solid");
       btn.classList.add("btn-upc-outline");
-      mostrarToast(`Tu solicitud de mentoría con ${m.nombre} fue enviada.`);
+      mostrarToast(`Tu solicitud de mentoría con ${m.nombre} fue enviada y guardada.`);
     });
   });
 }

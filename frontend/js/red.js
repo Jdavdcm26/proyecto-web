@@ -1,10 +1,17 @@
 /* ==================================================
    RED.JS
    Render de la página Mi Red (pages/red.html)
+   Usuarios desde upc_usuarios; conexiones se
+   persisten vía storage.js (upc_conexiones).
    ================================================== */
 function renderRed() {
   const contenedor = document.getElementById("redContainer");
   if (!contenedor) return;
+
+  const sesion = usuarioSesion();
+  if (!sesion) return;
+
+  const usuarios = (obtener(CLAVES.USUARIOS) || []).filter((u) => u.id != sesion.id);
 
   contenedor.innerHTML = usuarios
     .map(
@@ -16,7 +23,7 @@ function renderRed() {
         <p class="text-muted small mb-1">${u.carrera}</p>
         <span class="badge-upc mb-3">${u.rol}</span>
         <div class="d-flex flex-wrap justify-content-center gap-2 mb-4">
-          ${u.habilidades
+          ${(u.habilidades || [])
             .map((h) => `<span class="skill-tag">${h}</span>`)
             .join("")}
         </div>
@@ -30,6 +37,16 @@ function renderRed() {
 
   contenedor.querySelectorAll("[data-conectar]").forEach((btn) => {
     btn.addEventListener("click", () => {
+      const destinoId = Number(btn.dataset.conectar);
+      const destino = usuarios.find((u) => u.id === destinoId);
+      if (!destino) return;
+      agregar(CLAVES.CONEXIONES, {
+        usuarioOrigenId: sesion.id,
+        usuarioDestinoId: destinoId,
+        nombreDestino: destino.nombre,
+        estado: "pendiente",
+        fecha: new Date().toISOString(),
+      });
       btn.textContent = "Solicitud enviada";
       btn.classList.remove("btn-upc-outline");
       btn.classList.add("btn-upc-solid");
