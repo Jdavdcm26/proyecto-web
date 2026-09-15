@@ -56,5 +56,6 @@ function renderRed() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  if (!protegerPagina()) return;
   renderRed();
 });

@@ -39,5 +39,6 @@ function renderPortafolio() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  if (!protegerPagina()) return;
   renderPortafolio();
 });

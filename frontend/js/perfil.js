@@ -56,5 +56,6 @@ function renderPerfil() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  if (!protegerPagina()) return;
   renderPerfil();
 });

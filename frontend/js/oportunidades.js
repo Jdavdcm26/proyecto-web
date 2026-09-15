@@ -90,5 +90,6 @@ function mostrarDetalleOportunidad(op) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  if (!protegerPagina()) return;
   renderOportunidades();
 });

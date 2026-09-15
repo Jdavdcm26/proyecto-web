@@ -53,5 +53,6 @@ function renderMentores() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  if (!protegerPagina()) return;
   renderMentores();
 });

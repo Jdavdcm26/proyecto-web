@@ -83,5 +83,6 @@ function renderFeed() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  if (!protegerPagina()) return;
   renderFeed();
 });
